@@ -6,12 +6,12 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class Money {
 
-    private int anoutnUnits;
+    private int amountUnits;
 
     private String currency;
 
-    private Money(int anoutnUnits, String currency) {
-        this.anoutnUnits = anoutnUnits;
+    private Money(int amountUnits, String currency) {
+        this.amountUnits = amountUnits;
         this.currency = currency;
     }
 
@@ -23,13 +23,13 @@ public class Money {
         if (!this.currency.equals(money.currency)) {
             throw new IllegalArgumentException("Currency mismatch");
         }
-        return new Money(this.anoutnUnits + money.anoutnUnits, this.currency);
+        return new Money(this.amountUnits + money.amountUnits, this.currency);
     }
     public Money subtract(Money money) {
         if (!this.currency.equals(money.currency)) {
             throw new IllegalArgumentException("Currency mismatch");
         }
-        return new Money(this.anoutnUnits - money.anoutnUnits, this.currency);
+        return new Money(this.amountUnits - money.amountUnits, this.currency);
     }
 
 }
