@@ -1,6 +1,7 @@
 package com.codingShuttle.razorpay_clone.payment.entity;
 
 
+import com.codingShuttle.razorpay_clone.common.Entity.BaseEntity;
 import com.codingShuttle.razorpay_clone.common.Enum.PaymentActor;
 import com.codingShuttle.razorpay_clone.common.Enum.PaymentEvent;
 import com.codingShuttle.razorpay_clone.common.Enum.PaymentStatus;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "payment_transition_logs")
-public class PaymentTransitionLog {
+public class PaymentTransitionLog extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.UUID)

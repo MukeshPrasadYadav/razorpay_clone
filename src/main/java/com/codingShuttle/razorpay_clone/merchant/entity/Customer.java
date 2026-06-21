@@ -1,5 +1,6 @@
 package com.codingShuttle.razorpay_clone.merchant.entity;
 
+import com.codingShuttle.razorpay_clone.common.Entity.BaseEntity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -7,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name ="customer")
-public class Customer {
+public class Customer extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

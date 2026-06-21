@@ -1,21 +1,31 @@
 package com.codingShuttle.razorpay_clone.merchant.entity;
 
 
+import com.codingShuttle.razorpay_clone.common.Entity.BaseEntity;
 import com.codingShuttle.razorpay_clone.common.Enum.BusinessType;
 import com.codingShuttle.razorpay_clone.common.Enum.MerchantStatus;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "merchant")
-public class Merchant {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Merchant extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(unique = true,nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String name;
 
     @Column(length = 20)
     private String contactNumber;
