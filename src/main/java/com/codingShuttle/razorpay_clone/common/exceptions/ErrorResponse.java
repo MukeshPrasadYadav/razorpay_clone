@@ -1,0 +1,30 @@
+package com.codingShuttle.razorpay_clone.common.exceptions;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public record ErrorResponse(
+        String errorCode,
+        String errorDescription,
+        LocalDateTime timeStamp,
+        List<FieldError> fieldErrors
+) {
+
+    public  record FieldError(String field, String message){ }
+
+
+    //For without error fields
+
+    public static ErrorResponse of(String errorCode,String errorDescription){
+        return new ErrorResponse(errorCode,errorDescription,LocalDateTime.now(),null);
+    }
+
+
+    // For with error fileds
+    public static ErrorResponse of(String errorCode,String errorDescription,List<FieldError> fieldErrors){
+        return new ErrorResponse(errorCode,errorDescription,LocalDateTime.now(),fieldErrors);
+    }
+}

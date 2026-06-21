@@ -1,6 +1,7 @@
 package com.codingShuttle.razorpay_clone.payment.entity;
 
 
+import com.codingShuttle.razorpay_clone.common.Entity.BaseEntity;
 import com.codingShuttle.razorpay_clone.common.Entity.Money;
 import com.codingShuttle.razorpay_clone.common.Enum.PaymentMethod;
 import com.codingShuttle.razorpay_clone.common.Enum.PaymentStatus;
@@ -14,7 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "payments")
-public class Payment {
+public class Payment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -1,5 +1,6 @@
 package com.codingShuttle.razorpay_clone.payment.entity;
 
+import com.codingShuttle.razorpay_clone.common.Entity.BaseEntity;
 import com.codingShuttle.razorpay_clone.common.Entity.Money;
 import com.codingShuttle.razorpay_clone.common.Enum.OrderStatus;
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "order_records")
-public class OrderRecord {
+public class OrderRecord extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
