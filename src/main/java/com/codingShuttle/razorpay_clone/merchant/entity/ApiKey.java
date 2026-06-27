@@ -25,17 +25,21 @@ public class ApiKey extends BaseEntity {
     @JoinColumn(name = "merchant_id", nullable = false)
     private Merchant merchant;
 
-    @Column(nullable = false,length = 20)
+    @Column(nullable = false,length = 64,unique = true)
     private String keyId;
 
     @Column(nullable = false,length = 64)
-    private String keyHash;
+    private String keySecretHash;
 
+    @Enumerated(EnumType.STRING)
     private Environment environment;
 
     @Column(nullable = false)
     @Builder.Default
     private boolean enabled  = true;
+
+    @Column(length = 64)
+    private String previousSecretHash;
 
     private LocalDateTime lastUpdatedAt;
 

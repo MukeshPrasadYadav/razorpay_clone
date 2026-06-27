@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,5 +27,25 @@ public class ApiKeyController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(apiKeyService.create(merchantId,request));
 
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ApiKeyResponse>> listByMerchant(@PathVariable UUID merchantId){
+
+        return ResponseEntity.ok(apiKeyService.listByMerchant(merchantId));
+    }
+
+        @DeleteMapping("/{keyId}")
+        public ResponseEntity<Void> revokeApiKey(@PathVariable UUID merchantId,@PathVariable UUID keyId){
+
+            apiKeyService.revoke(merchantId,keyId);
+            return ResponseEntity.noContent().build();
+        }
+
+    @PostMapping("/rotate/{keyId}")
+    public ResponseEntity<ApiKeyResponse> rotate(@PathVariable UUID merchantId, @PathVariable UUID keyId){
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(apiKeyService.rotate(merchantId,keyId));
     }
 }
